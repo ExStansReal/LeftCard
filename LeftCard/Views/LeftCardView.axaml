@@ -1,0 +1,133 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d" d:DesignWidth="247" d:DesignHeight="120"
+             x:Class="LeftCard.Views.LeftCardView" >
+	
+	<UserControl.Styles>
+		<Style Selector="Label.main">
+			<Setter Property="Background" Value="#f3f3f3"/>
+			<Setter Property="Width" Value="227"/>
+			<Setter Property="Height" Value="100"/>
+			<Setter Property="CornerRadius" Value="10"/>
+		</Style>
+		<Style Selector="Border.main">
+			<Setter Property="BoxShadow" Value="0 6 20 2 #bfbfbf"/>
+			<Setter Property="BorderThickness" Value="2"/>
+			<Setter Property="CornerRadius" Value="3"/>
+			<Setter Property="Padding"	Value="4"/>
+			<Setter Property="Width" Value="227"/>
+			<Setter Property="Height" Value="100"/>
+		</Style>
+		<Style Selector="Image.Images1">
+			<Setter Property="Width" Value="35"/>
+			<Setter Property="Height" Value="35"/>
+			<Setter Property="HorizontalAlignment" Value="Left"/>
+			<Setter Property="Margin" Value="0 0 0 100"/>
+		</Style>
+		<Style Selector="Button.Images2">
+			<Setter Property="Width" Value="35"/>
+			<Setter Property="Height" Value="35"/>
+			<Setter Property="HorizontalAlignment" Value="Right"/>
+			<Setter Property="BorderThickness" Value="0"/>
+			<Setter Property="CornerRadius" Value="40"/>
+		</Style>
+		<Style Selector="Border.ShadowIm2">
+			<Setter Property="HorizontalAlignment" Value="Right"/>
+			<Setter Property="Width" Value="35"/>
+			<Setter Property="Height" Value="35"/>
+			<Setter Property="CornerRadius" Value="40"/>
+			<Setter Property="Margin" Value="0 0 0 100"/>
+		</Style>
+		<Style Selector="Border.ShadowIm2:pointerover Border#border">
+			<Setter Property="BoxShadow" Value="0 2 3 2 #bfbfbf"/>
+		</Style>
+		<Style Selector="Grid.Top_In">
+			<Setter Property="Margin" Value="0 0 0 100"/>
+		</Style>
+		<Style Selector="TextBlock.Size_UP">
+			<Setter Property="FontSize" Value="9"/>
+			<Setter Property="Margin" Value="5 0 0 0"/>
+			<Setter Property="FontWeight" Value="Bold"/>
+			<Setter Property="FontFamily" Value="Roboto"/>
+		</Style>
+		<Style Selector="TextBlock.TextWithColor">
+			<Setter Property="Foreground" Value="{Binding ColorTempCard}"/>
+		</Style>
+		<Style Selector="TextBlock.SizeDown">
+			<Setter Property="FontSize" Value="12"/>
+			<Setter Property="FontWeight" Value="Bold"/>
+			<Setter Property="FontFamily" Value="Roboto"/>
+			<Setter Property="Width" Value="210"/>
+			<Setter Property="Height" Value="15"/>
+			
+		</Style>
+		<Style Selector="TextBlock.SizeDown_First">
+			<Setter Property="FontSize" Value="16"/>
+			<Setter Property="FontWeight" Value="Bold"/>
+			<Setter Property="FontFamily" Value="Roboto"/>
+			<Setter Property="TextAlignment" Value="Left"/>
+			<Setter Property="Width" Value="210"/>
+			<Setter Property="Height" Value="21"/>
+		</Style>
+		<Style Selector="Grid.Bottom">
+			<Setter Property="Margin" Value="0 35 0 0 "/>
+ 		</Style>
+		<Style Selector="TextBlock.Color_Second">
+			<Setter Property="Foreground" Value="#3A557E"/>
+		</Style>
+	</UserControl.Styles>
+
+	<DockPanel>
+		<Border Classes="main">
+			<Label Classes="main">
+				<Panel Classes="noopac">
+					<Grid >
+						<Grid.ColumnDefinitions>
+							<ColumnDefinition Width="5*"/>
+							<ColumnDefinition Width="21*"/>
+							<ColumnDefinition Width="5*"/>
+						</Grid.ColumnDefinitions>
+						<Image Classes="Images1" Source="/Assets/image.png" Grid.Column="0"/>
+						<Panel Grid.Column="1">
+							<Grid Classes="Top_In">
+								<Grid.RowDefinitions>
+									<RowDefinition Height="10"/>
+									<RowDefinition Height="10"/>
+									<RowDefinition Height="10"/>
+								</Grid.RowDefinitions>
+								<Grid.ColumnDefinitions>
+									<ColumnDefinition/>
+								</Grid.ColumnDefinitions>
+								<TextBlock Classes="Size_UP TextWithColor"  Text="{Binding TemperatureCard}" Grid.Row="0" />
+								<TextBlock Classes="Size_UP" Text="{Binding KelvincTempCard}" Grid.Row="1" />
+								<TextBlock Classes="Size_UP" Text="{Binding VoltazAndPowerCard}" Grid.Row="2" />
+							</Grid>
+						</Panel>
+						<Border Classes="ShadowIm2"  Grid.Column="2">
+							<Button Classes="Images2" ToolTip.Tip="Это кнопка для включения и отключение" Command="{Binding TurningOffOnCommand}">
+								<Panel Width="35" Height="35">
+									<Image Source="/Assets/button.png" Width="35" Height="35"/>
+								</Panel>
+							</Button>
+						</Border>
+					</Grid>
+					
+					<Grid Classes="Bottom">
+						<Grid.RowDefinitions>
+							<RowDefinition Height="17"/>
+							<RowDefinition Height="14"/>
+							<RowDefinition Height="14"/>
+						</Grid.RowDefinitions>
+						<TextBlock Classes="SizeDown_First"  Text="{Binding NameCard}" Grid.Row="0" />
+						<TextBlock Classes="SizeDown Color_Second" Text="{Binding ControllerAndChannelCard}" Grid.Row="1" />
+						<TextBlock Classes="SizeDown" Text="{Binding PlacementCard}" Grid.Row="2" />
+					</Grid>
+				</Panel>
+			</Label>
+		</Border>
+	</DockPanel>
+</UserControl>
+
+
