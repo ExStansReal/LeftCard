@@ -3,8 +3,13 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d" d:DesignWidth="247" d:DesignHeight="120"
-             x:Class="LeftCard.Views.LeftCardView" >
-	
+             x:Class="LeftCard.Views.LeftCardView" 
+			 xmlns:convertors="clr-namespace:LeftCard.Convertors"
+			 >
+	<UserControl.Resources>
+		<convertors:ConvertorColor x:Key="ConvertorColor"/>
+		<convertors:ConvertorKervins x:Key="ConvertorKervins"/>
+	</UserControl.Resources>
 	<UserControl.Styles>
 		<Style Selector="Label.main">
 			<Setter Property="Background" Value="#f3f3f3"/>
@@ -53,7 +58,7 @@
 			<Setter Property="FontFamily" Value="Roboto"/>
 		</Style>
 		<Style Selector="TextBlock.TextWithColor">
-			<Setter Property="Foreground" Value="{Binding ColorTempCard}"/>
+			<Setter Property="Foreground" Value="{Binding PowerSupply.temperature, Converter={StaticResource ConvertorColor}}"/>
 		</Style>
 		<Style Selector="TextBlock.SizeDown">
 			<Setter Property="FontSize" Value="12"/>
@@ -101,7 +106,7 @@
 									<ColumnDefinition/>
 								</Grid.ColumnDefinitions>
 								<TextBlock Classes="Size_UP TextWithColor"  Text="{Binding TemperatureCard}" Grid.Row="0" />
-								<TextBlock Classes="Size_UP" Text="{Binding KelvincTempCard}" Grid.Row="1" />
+								<TextBlock Classes="Size_UP" Text="{Binding PowerSupply.temperature, Converter={StaticResource ConvertorKervins}}" Grid.Row="1" />
 								<TextBlock Classes="Size_UP" Text="{Binding VoltazAndPowerCard}" Grid.Row="2" />
 							</Grid>
 						</Panel>

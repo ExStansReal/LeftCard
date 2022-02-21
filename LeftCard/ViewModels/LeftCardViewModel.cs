@@ -4,6 +4,7 @@ using LeftCard.Views;
 using ReactiveUI;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Reactive;
 using System.Text;
@@ -24,31 +25,52 @@ namespace LeftCard.ViewModels
                 this.RaiseAndSetIfChanged(ref _powerSupply, value);
                 this.RaisePropertyChanged(nameof(TurningOffOnCommand));
                 this.RaisePropertyChanged(nameof(TemperatureCard));
-                this.RaisePropertyChanged(nameof(ColorTempCard));
                 this.RaisePropertyChanged(nameof(KelvincTempCard));
                 this.RaisePropertyChanged(nameof(VoltazAndPowerCard));
                 this.RaisePropertyChanged(nameof(ControllerAndChannelCard));
             }
         }
-        public LeftCardViewModel(PowerSupply items)
+
+        public LeftCardViewModel(PowerSupply powerSupply)
         {
-            PowerSupply = items;
-            TemperatureCard = items.TemperatureCard;
-            ColorTempCard = items.Color;
-            KelvincTempCard = items.KelvincTempCard;
-            VoltazAndPowerCard = items.VoltazAndPowerCard;
-            NameCard = items.name;
-            ControllerAndChannelCard = items.ControllerAndChannelCard;
-            PlacementCard = items.Placement;
-            TurningOffOnCommand = items.TurningOffOnCommand;
+            this.PowerSupply = powerSupply;
         }
-        public ICommand TurningOffOnCommand{ get;set;}
-        public string TemperatureCard { get; set; }
-        public string ColorTempCard { get; set; }
-        public string KelvincTempCard { get; set; }
-        public string VoltazAndPowerCard { get; set; }
-        public string NameCard { get; set; }
-        public string ControllerAndChannelCard { get; set; }
-        public string PlacementCard { get; set; }
+
+        public ICommand TurningOffOnCommand
+        {
+            get => ReactiveCommand.CreateFromTask(async () =>
+            {
+                switch (PowerSupply.workStatus)
+                {
+                    case WorkStatus.On:
+                        await PowerSupply.start();
+                        break;
+                    case WorkStatus.Off:
+                        await PowerSupply.stop();
+                        break;
+                }
+            });
+        }
+
+        public string TemperatureCard
+        {
+            get => Convert.ToString(PowerSupply.temperature) + "°C";
+        }
+        public string KelvincTempCard
+        {
+            get => Convert.ToString((PowerSupply.temperature + 273, 15)) + "k";
+        }
+
+        public string VoltazAndPowerCard
+        {
+            get => Convert.ToString(PowerSupply.voltage) + "V | " + Convert.ToString(PowerSupply.current_strength) + "A";
+        }
+        public string NameCard { get => "Name"; }
+        public string PlacementCard { get => "Name"; }
+
+        public string ControllerAndChannelCard
+        {
+            get => " | Канал" + Convert.ToString(PowerSupply.id);
+        }
     }
 }
