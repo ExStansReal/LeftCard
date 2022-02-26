@@ -82,6 +82,8 @@
 		</Style>
 	</UserControl.Styles>
 
+	
+		
 	<DockPanel>
 		<Border Classes="main">
 			<Label Classes="main">
@@ -116,7 +118,6 @@
 							</Button>
 						</Border>
 					</Grid>
-					
 					<Grid Classes="Bottom">
 						<Grid.RowDefinitions>
 							<RowDefinition Height="17"/>
