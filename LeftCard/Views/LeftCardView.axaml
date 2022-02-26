@@ -13,7 +13,7 @@
 	<UserControl.Styles>
 		<Style Selector="Label.main">
 			<Setter Property="Background" Value="#f3f3f3"/>
-			<Setter Property="Width" Value="227"/>
+			<Setter Property="Width" Value="200"/>
 			<Setter Property="Height" Value="100"/>
 			<Setter Property="CornerRadius" Value="10"/>
 		</Style>
@@ -22,7 +22,7 @@
 			<Setter Property="BorderThickness" Value="2"/>
 			<Setter Property="CornerRadius" Value="3"/>
 			<Setter Property="Padding"	Value="4"/>
-			<Setter Property="Width" Value="227"/>
+			<Setter Property="Width" Value="200"/>
 			<Setter Property="Height" Value="100"/>
 		</Style>
 		<Style Selector="Image.Images1">
@@ -49,7 +49,7 @@
 			<Setter Property="BoxShadow" Value="0 2 3 2 #bfbfbf"/>
 		</Style>
 		<Style Selector="Grid.Top_In">
-			<Setter Property="Margin" Value="0 0 0 100"/>
+			<Setter Property="Margin" Value="1 0 0 100"/>
 		</Style>
 		<Style Selector="TextBlock.Size_UP">
 			<Setter Property="FontSize" Value="9"/>
@@ -64,7 +64,6 @@
 			<Setter Property="FontSize" Value="12"/>
 			<Setter Property="FontWeight" Value="Bold"/>
 			<Setter Property="FontFamily" Value="Roboto"/>
-			<Setter Property="Width" Value="210"/>
 			<Setter Property="Height" Value="15"/>
 			
 		</Style>
@@ -72,8 +71,7 @@
 			<Setter Property="FontSize" Value="16"/>
 			<Setter Property="FontWeight" Value="Bold"/>
 			<Setter Property="FontFamily" Value="Roboto"/>
-			<Setter Property="TextAlignment" Value="Left"/>
-			<Setter Property="Width" Value="210"/>
+			<Setter Property="TextAlignment" Value="Left"/>			
 			<Setter Property="Height" Value="21"/>
 		</Style>
 		<Style Selector="Grid.Bottom">
